@@ -138,7 +138,10 @@ void loop() {
 void ondemandWiFi()
 {
     WiFiManager wifiManager;
-    if (!wifiManager.startConfigPortal("OnDemandAP")) {
+
+    pixels.setPixelColor(0, 255, 255, 0); // yellow #FFFF00
+    pixels.show();
+    if (!wifiManager.startConfigPortal("ogoSense")) {
       Serial.println("failed to connect and hit timeout");
       delay(3000);
       //reset and try again, or maybe put it to deep sleep
@@ -147,4 +150,15 @@ void ondemandWiFi()
     }
     //if you get here you have connected to the WiFi
     Serial.println("connected...yeey :)");
+    pixels.setPixelColor(0, 0, 0, 255); // blue #0000FF
+    pixels.show();
+    delay(1000);
+    pixels.setPixelColor(0, 0, 0, 0);
+    pixels.show();
+    delay(500);
+    pixels.setPixelColor(0, 0, 0, 255); // blue #0000FF
+    pixels.show();
+    delay(1000);
+    pixels.setPixelColor(0, 0, 0, 0);
+    pixels.show();
 }
